@@ -1,0 +1,23 @@
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.13.7-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  postgres:
+    container_name: postgres
+    image: postgres:16.4
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  api:
+    container_name: finapp-ms-reports
+    build: .
+    depends_on:
+      - rabbitmq
+      - postgres
+    volumes:
+      - .:/app
+    env_file: .env
