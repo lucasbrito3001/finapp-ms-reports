@@ -3,11 +3,6 @@ class ReportRequestMessage:
     file_extension: str
 
 
-class MonthlyExpensesReportFilters:
-    target_month: str
-    user_id: int
-    user_fullname: str
-
-
 class MonthlyExpensesReportRequestMessage(ReportRequestMessage):
-    filters: MonthlyExpensesReportFilters
+    target_month: str
+    target_year: str

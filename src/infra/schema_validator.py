@@ -15,8 +15,10 @@ class SchemaValidator:
         try:
             validated = self.schema.validate(payload)
 
+            print("[SchemaValidator] The payload is valid, schema validation succeeded")
+
             return {"status": True, "validated_payload": validated}
         except SchemaError as schema_error:
-            print(f"[SchemaValidator] Error validating schema: {schema_error}")
+            print(f"[SchemaValidator] The payload is invalid, errors: {schema_error}")
 
             return {"status": False, "error": schema_error}

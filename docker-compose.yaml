@@ -11,6 +11,8 @@ services:
     image: postgres:16.4
     environment:
       POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   api:
     container_name: finapp-ms-reports

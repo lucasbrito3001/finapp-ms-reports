@@ -2,10 +2,9 @@ import json
 import pika
 import pika.adapters.blocking_connection
 import pika.credentials
-from src.adapters.messaging.message_publisher import MessagePublisher
 
 
-class RabbitMQPublisher(MessagePublisher):
+class RabbitMQPublisher:
     def __init__(
         self,
         channel: pika.adapters.blocking_connection.BlockingChannel,
