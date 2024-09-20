@@ -1,0 +1,14 @@
+name: Run unit tests on create pull requests
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - homolog
+      - main
+
+jobs:
+  run-unit-tests:
+    name: Run unit tests on create pull requests
+    runs-on: ubuntu:latest
+

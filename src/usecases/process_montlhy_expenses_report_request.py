@@ -52,7 +52,6 @@ class ProcessMontlhyExpensesReportRequest(UseCase):
         created_file_path = self.report_file_creator.createXlsx(
             expenses,
             columns,
-            False,
             filename,
             f"{target_month:0>2}-{target_year[2:]}",
         )

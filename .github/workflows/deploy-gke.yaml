@@ -1,0 +1,11 @@
+name: Deploy rabbitmq consumer
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  build-docker-image:
+    name: Build docker image
+    runs-on: ubuntu:latest

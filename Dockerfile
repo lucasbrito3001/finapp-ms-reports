@@ -9,7 +9,8 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
-COPY . .
+COPY src .
+COPY app.py .
 
 ENV PYTHONUNBUFFERED=1 
 ENV FLASK_APP=app.py
