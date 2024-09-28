@@ -1,0 +1,1 @@
+netstat -p | grep rabbitmq | wc -l

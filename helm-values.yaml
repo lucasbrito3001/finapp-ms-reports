@@ -1,0 +1,34 @@
+containers:
+  replicas: 1
+  livenessProbe:
+    
+  probes:
+    liveness: netstat -p | grep rabbitmq | wc -l
+    startup: netstat -p | grep rabbitmq | wc -l
+  app:
+    image: ''
+    port: 3000
+    labels:
+      foo: bar
+    annotations:
+      owner: dev-team
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+    env:
+      SALT_ROUNDS: 1
+
+secrets:
+  enabled: true
+  projectId: gcp-testing-431723
+  list:
+    - name: ms-finapp-inout-env
+      version: latest
+
+hpa:
+  cpuTargetUtilization: 75
+  memoryTargetUtilization: 80
