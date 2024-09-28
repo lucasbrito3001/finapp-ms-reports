@@ -17,6 +17,8 @@ services:
   api:
     container_name: finapp-ms-reports
     build: .
+    ports:
+      - 3000:3000
     depends_on:
       - rabbitmq
       - postgres

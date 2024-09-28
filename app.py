@@ -1,7 +1,9 @@
 import os
+import platform
 import pika
 import pika.credentials
 import pika.exceptions
+from flask import Flask
 from dotenv import load_dotenv
 from src.infra.consumer import Consumer
 from src.infra.rabbitmq_publisher import RabbitMQPublisher
@@ -23,7 +25,11 @@ from src.schemas.monthly_expenses_report_request import (
 load_dotenv(".env")
 
 print("===========================================================================")
-print("[Bootstrap] Starting application bootstrap\n")
+print(f"[Platform] System: {platform.system()}")
+print(f"[Platform] Release: {platform.release()}")
+print(f"[Platform] OS name: {os.name}")
+print("===========================================================================")
+print("[Bootstrap] Starting application bootstrap")
 
 # external connections
 # ----------------------------------------------------
@@ -83,10 +89,13 @@ monthly_expenses_report_consumer = Consumer(
 
 monthly_expenses_report_consumer.prepare()
 
+print("[Bootstrap] Application bootstrap done!")
+print("===========================================================================")
+
 try:
-    print("\n[Bootstrap] Application bootstrap done!")
     print("[Application] Consuming configured queues...")
-    print("===========================================================================\n")
+    print("===========================================================================")
+    print("")
     channel.start_consuming()
 except pika.exceptions.ConnectionClosedByBroker:
     print("Connection closed by broker")

@@ -14,8 +14,8 @@ class ReportColumn:
 
 
 class ReportFileCreator:
-    def __init__(self, xlsx_creator, dataframe_creator):
-        return
+    # def __init__(self, xlsx_creator, dataframe_creator):
+    #     return
     
     formats_dict = {
         "currency": {"num_format": "[$R$] #,##0.00"},
